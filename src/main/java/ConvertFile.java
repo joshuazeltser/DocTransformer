@@ -44,7 +44,7 @@ public class ConvertFile<T> {
     public void setFile(String fileName) throws IOException {
         switch (type) {
             case PDF: this.file = (T) PDDocument.load(new File(fileName)); break;
-            default:
+            default: break;
         }
     }
 
