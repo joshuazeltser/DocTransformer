@@ -47,4 +47,9 @@ public class ConvertFile<T> {
             default:
         }
     }
+
+    @Override
+    public String toString() {
+        return this.fileName;
+    }
 }

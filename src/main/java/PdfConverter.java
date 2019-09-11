@@ -6,19 +6,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 
-public class PdfConverter {
+public class PdfConverter extends Converter{
 
-    private ConvertFile<PDDocument> convertFile;
-
-    public PdfConverter(ConvertFile<PDDocument> convertFile) {
-        this.convertFile = convertFile;
+    public PdfConverter(ConvertFile convertFile, String outputPath) {
+        super(convertFile, outputPath);
     }
 
-    public boolean convertToHTML(String outputName) throws IOException {
-        Writer output = new PrintWriter("src/test/java/testFiles/output/" + outputName + ".html", "utf-8");
+    public boolean convertToHTML() throws IOException {
+        Writer output = new PrintWriter(  super.outputPath + ".html", "utf-8");
 
         try {
-            new PDFDomTree().writeText(this.convertFile.getFile(), output);
+            new PDFDomTree().writeText((PDDocument) super.file.getFile(), output);
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
             return false;
@@ -26,4 +24,18 @@ public class PdfConverter {
         output.close();
         return true;
     }
+
+    public boolean convertToDocx(String outputName) {
+        return true;
+    }
+
+    public boolean convertToJpeg(String outputName) {
+        return true;
+    }
+
+    public boolean convertToText(String outputName) {
+        return true;
+    }
+
+
 }
