@@ -20,7 +20,6 @@ public class PdfTests {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         File newFile = new File("src/test/java/testFiles/output/output1.html");
 
         assertTrue(newFile.exists());
