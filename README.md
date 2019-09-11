@@ -1,4 +1,4 @@
-# Doctransformer
+# DocTransformer
 Document converter for PDF, DOCX, JPEG, TXT, HTML etc.
 
 This project works on providing an interface that allows you to convert files between several different types. This is a common
