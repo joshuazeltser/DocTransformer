@@ -13,7 +13,7 @@ public class PdfTests {
 
     @BeforeEach
     public void init() {
-        file = new ConvertFile<PDDocument>("src/test/java/testFiles/input/input1.pdf", FileType.PDF);
+        file = new ConvertFile<PDDocument>("src/test/java/testFiles/input/input1.pdf");
     }
 
     @AfterEach

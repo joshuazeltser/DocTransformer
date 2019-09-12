@@ -1,3 +1,3 @@
 public enum FileType {
-    PDF, DOCX, TXT, MD
+    PDF, DOCX, TXT, MD, JPEG
 }

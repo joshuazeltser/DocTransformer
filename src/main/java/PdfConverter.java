@@ -16,6 +16,7 @@ public class PdfConverter extends Converter{
         super(convertFile, outputPath);
     }
 
+//    TODO: add finally to always close file
     public void convertToHTML() throws IOException {
         Writer output = new PrintWriter(  super.outputPath + ".html", "utf-8");
         try {
@@ -43,8 +44,7 @@ public class PdfConverter extends Converter{
     public void convertToText() {
     }
 
-    public void convertToPdf() {
-    }
+    public void convertToPdf() {}
 
 
 }

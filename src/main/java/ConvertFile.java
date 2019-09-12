@@ -9,32 +9,38 @@ public class ConvertFile<T> {
 
     private FileType type;
 
-    private String fileName;
+    private String filePath;
 
-    public ConvertFile(String fileName, FileType type) {
-        this.fileName = fileName;
-        this.type = type;
-        try {
-            this.setFile(fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public ConvertFile(String filePath) throws IOException, InvalidFileTypeException{
+        this.filePath = filePath;
+        this.setType();
+        this.setFile(filePath);
     }
 
     public FileType getType() {
         return type;
     }
 
-    public void setType(FileType type) {
-        this.type = type;
+    public void setType() throws InvalidFileTypeException {
+        String fileType = filePath.split("\\.")[1];
+
+        switch (fileType) {
+            case "pdf": this.type = FileType.PDF; break;
+            case "docx": this.type = FileType.DOCX; break;
+            case "txt": this.type = FileType.TXT; break;
+            case "md": this.type = FileType.MD; break;
+            case "jpeg": this.type = FileType.JPEG; break;
+            default:
+                throw new InvalidFileTypeException("Incorrect filetype: " + fileType);
+        }
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public T getFile() {
@@ -44,12 +50,18 @@ public class ConvertFile<T> {
     public void setFile(String fileName) throws IOException {
         switch (type) {
             case PDF: this.file = (T) PDDocument.load(new File(fileName)); break;
+            case DOCX:
+                break;
+            case TXT:
+                break;
+            case MD:
+                break;
             default: break;
         }
     }
 
     @Override
     public String toString() {
-        return this.fileName;
+        return this.filePath;
     }
 }
