@@ -41,7 +41,14 @@ public class Main {
 
         switch (newType) {
             case "pdf": converter.convertToPdf(); break;
-            case "docx": converter.convertToDocx(); break;
+            case "docx":
+                try {
+                    converter.convertToDocx();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return;
+                }
+                break;
             case "txt": converter.convertToText(); break;
             case "html":
                 try {

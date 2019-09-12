@@ -13,7 +13,7 @@ public abstract class Converter {
 
     public abstract void convertToHTML() throws IOException;
 
-    public abstract void convertToDocx();
+    public abstract void convertToDocx() throws IOException;
 
     public abstract void convertToJpeg() throws IOException;
 
