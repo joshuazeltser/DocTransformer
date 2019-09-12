@@ -6,19 +6,25 @@ public class WordConvert extends Converter {
         super(file, outputPath);
     }
 
-    public boolean convertToHTML() throws IOException {
-        return false;
+    public void convertToHTML() throws IOException {
+
     }
 
-    public boolean convertToDocx(String outputName) {
-        return false;
+    public void convertToDocx() {
+
     }
 
-    public boolean convertToJpeg(String outputName) {
-        return false;
+    public void convertToJpeg() throws IOException {
+
     }
 
-    public boolean convertToText(String outputName) {
-        return false;
+    public void convertToText() {
+
     }
+
+    public void convertToPdf() {
+
+    }
+
+
 }

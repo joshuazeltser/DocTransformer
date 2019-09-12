@@ -11,14 +11,15 @@ public abstract class Converter {
         this.outputPath = outputPath;
     }
 
-    public abstract boolean convertToHTML() throws IOException;
+    public abstract void convertToHTML() throws IOException;
 
-    public abstract boolean convertToDocx(String outputName);
+    public abstract void convertToDocx();
 
-    public abstract boolean convertToJpeg(String outputName);
+    public abstract void convertToJpeg() throws IOException;
 
-    public abstract boolean convertToText(String outputName);
+    public abstract void convertToText();
 
+    public abstract void convertToPdf();
 
     public ConvertFile getFile() {
         return file;
