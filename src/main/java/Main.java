@@ -28,7 +28,7 @@ public class Main {
                 break;
             case TXT:
                 break;
-            case MD:
+            case HTML:
                 break;
             case JPEG:
                 break;
@@ -49,7 +49,14 @@ public class Main {
                     return;
                 }
                 break;
-            case "txt": converter.convertToText(); break;
+            case "txt":
+                try {
+                    converter.convertToTxt();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return;
+                }
+                break;
             case "html":
                 try {
                     converter.convertToHTML();

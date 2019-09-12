@@ -28,7 +28,7 @@ public class ConvertFile<T> {
             case "pdf": this.type = FileType.PDF; break;
             case "docx": this.type = FileType.DOCX; break;
             case "txt": this.type = FileType.TXT; break;
-            case "md": this.type = FileType.MD; break;
+            case "html": this.type = FileType.HTML; break;
             case "jpeg": this.type = FileType.JPEG; break;
             default:
                 throw new InvalidFileTypeException("Incorrect filetype: " + fileType);
@@ -54,7 +54,7 @@ public class ConvertFile<T> {
                 break;
             case TXT:
                 break;
-            case MD:
+            case HTML:
                 break;
             default: break;
         }

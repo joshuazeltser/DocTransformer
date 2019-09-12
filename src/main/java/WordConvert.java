@@ -18,7 +18,7 @@ public class WordConvert extends Converter {
 
     }
 
-    public void convertToText() {
+    public void convertToTxt() {
 
     }
 

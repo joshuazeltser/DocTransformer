@@ -1,11 +1,14 @@
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.LocationTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
-import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
+import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.io.RandomAccessRead;
+import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.apache.poi.xwpf.usermodel.BreakType;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -15,10 +18,7 @@ import org.fit.pdfdom.PDFDomTree;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
+import java.io.*;
 
 public class PdfConverter extends Converter{
 
@@ -53,6 +53,7 @@ public class PdfConverter extends Converter{
         FileOutputStream out = new FileOutputStream(outputPath + ".docx");
         document.write(out);
         out.close();
+        document.close();
     }
 
     public void convertToJpeg() throws IOException {
@@ -65,10 +66,13 @@ public class PdfConverter extends Converter{
         doc.close();
     }
 
-    public void convertToText() {
+    public void convertToTxt() throws IOException {
+        PDFTextStripper pdfTextStripper = new PDFTextStripper();
+        String parsedText = pdfTextStripper.getText((PDDocument) file.getFile());
+        PrintWriter pw = new PrintWriter(outputPath + ".txt");
+        pw.print(parsedText);
+        pw.close();
     }
 
     public void convertToPdf() {}
-
-
 }

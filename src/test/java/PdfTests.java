@@ -128,8 +128,6 @@ public class PdfTests {
 
         try {
             converter.convertToDocx();
-
-            System.out.println(converter.getOutputPath());
         } catch (IOException e) {
             e.printStackTrace();
             fail();
@@ -153,8 +151,6 @@ public class PdfTests {
 
         try {
             converter.convertToDocx();
-
-            System.out.println(converter.getOutputPath());
         } catch (IOException e) {
             e.printStackTrace();
             fail();
@@ -165,6 +161,50 @@ public class PdfTests {
         assertTrue(newFile.exists());
         try {
             assertFalse(FileUtils.readLines(newFile).isEmpty());
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    public void convertPdfToTxtTest1() {
+        Converter converter = new PdfConverter(file1, "src/test/java/testFiles/output/output6");
+
+        try {
+            converter.convertToTxt();
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail();
+        }
+        File newFile = new File("src/test/java/testFiles/output/output6.txt");
+        assertTrue(newFile.exists());
+
+        try {
+            assertEquals(FileUtils.readLines(newFile), FileUtils.readLines(
+                    new File("src/test/java/testFiles/expectedOutput/output6.txt")));
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    public void convertPdfToTxtTest2() {
+        Converter converter = new PdfConverter(file2, "src/test/java/testFiles/output/output7");
+
+        try {
+            converter.convertToTxt();
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail();
+        }
+        File newFile = new File("src/test/java/testFiles/output/output7.txt");
+        assertTrue(newFile.exists());
+
+        try {
+            assertEquals(FileUtils.readLines(newFile), FileUtils.readLines(
+                    new File("src/test/java/testFiles/expectedOutput/output7.txt")));
         } catch (IOException e) {
             e.printStackTrace();
             fail();

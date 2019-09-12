@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public abstract class Converter {
@@ -17,7 +18,7 @@ public abstract class Converter {
 
     public abstract void convertToJpeg() throws IOException;
 
-    public abstract void convertToText();
+    public abstract void convertToTxt() throws IOException;
 
     public abstract void convertToPdf();
 
